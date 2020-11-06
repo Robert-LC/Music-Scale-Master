@@ -11,6 +11,9 @@ public class Scale
     public Scale(String name, String[] notes, String[] chordSequence, int noteCount)
     {
         setName(name);
+        setNotes(notes);
+        setChordSequence(chordSequence);
+        setNoteCount(noteCount);
     }
 
     public void setName(String name)
@@ -61,6 +64,17 @@ public class Scale
     public int getNoteCount()
     {
         return noteCount;
+    }
+
+    /**
+     * Take the Scale's array of notes, combine them into a single string
+     * Trim the spaces and convert it to uppercase.
+     */
+    public String toStringNotes()
+    {
+        String notesString = String.join("", getNotes());
+        notesString = notesString.toUpperCase();
+        return notesString;
     }
 
 }
