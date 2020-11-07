@@ -69,6 +69,9 @@ public class Scale
     /**
      * Take the Scale's array of notes, combine them into a single string
      * Trim the spaces and convert it to uppercase.
+     * 
+     * 
+     * @return The Notes Array combined with spaces removed and all uppercase.
      */
     public String toStringNotes()
     {
@@ -76,5 +79,6 @@ public class Scale
         notesString = notesString.toUpperCase();
         return notesString;
     }
+
 
 }
