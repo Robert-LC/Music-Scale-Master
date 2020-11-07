@@ -68,6 +68,7 @@ public class Guess
             {
                 JOptionPane.showMessageDialog(null, "Incorrect, try again!\nWrong Guesses: " + guesses);
                 guess = JOptionPane.showInputDialog(null, "Guess all the notes in " + scale.getName());
+                guess = guess.replaceAll("\\s+", "").toUpperCase();
                 guesses++;
             }
 
@@ -129,9 +130,46 @@ public class Guess
 
     public void guessChords()
     {
+        int guesses = 1;
+        Scale scale;
+        ArrayList<String> chordTriad;
         do
         {
+            scale = getRandomScale();
+            String[] notes = scale.getNotes();
+            chordTriad = new ArrayList<>();
+            
+            //Returns the 1st, 3rd, and 5th notes (Chord Triad) and inserts them into their own arrayList.
+            for(int i = 0; i <= 4; i += 2)
+            {
+                String addedNote = notes[i];
+                chordTriad.add(addedNote);
+            }
 
+            // Merge the chordTriad arrayList into a single string that can be used for comparison
+            String answerChord = String.join("", chordTriad).toUpperCase();
+
+            String guess = JOptionPane.showInputDialog(null, "What notes make a chord triad in the " + scale.getName() + " scale?");
+            guess = guess.replaceAll("\\s+", "").toUpperCase();
+
+            while(!guess.equals(answerChord))
+            {
+                JOptionPane.showMessageDialog(null, "Incorrect, try again!\nWrong Guesses: " + guesses);
+                guess = JOptionPane.showInputDialog(null, "What notes make a chord triad in the " + scale.getName() + " scale?");
+                guess = guess.replaceAll("\\s+", "").toUpperCase();
+                guesses++;
+            }
+
+            if (guesses == 1)
+            {
+                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " try!", "Good Job", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " tries.", "Good Job", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            guesses = 1;
         } while(playAgain());
     }
 

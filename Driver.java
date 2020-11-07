@@ -10,7 +10,7 @@ public class Driver
         
         mainMenu();
            
-
+        System.exit(0);
         
     }
 

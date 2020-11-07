@@ -75,8 +75,7 @@ public class Scale
      */
     public String toStringNotes()
     {
-        String notesString = String.join("", getNotes());
-        notesString = notesString.toUpperCase();
+        String notesString = String.join("", getNotes()).toUpperCase();
         return notesString;
     }
 
