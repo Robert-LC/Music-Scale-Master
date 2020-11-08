@@ -1,7 +1,5 @@
 import java.util.Random;
 import java.util.ArrayList;
-
-import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +20,6 @@ public class Guess
         scalesArrayList = new ArrayList<>();
         rand = new Random();
         
-
         // Only two chord sequences, depending on if the key is major or minor
         String[] majorChordSequence = new String[] {"Maj", "min", "min", "Maj", "Maj", "min", "dim"};
         String[] minorChordSequence = new String[] {"min", "dim", "maj", "min", "min", "maj", "maj"};
@@ -45,15 +42,13 @@ public class Guess
         scalesArrayList.add(cMajor);
         scalesArrayList.add(aMinor);
         scalesArrayList.add(cMinor);
-
-
-
     }
 
     public void guessEntireScale()
     {
         int guesses = 1;
         Scale scale;
+
         do 
         {
             scale = getRandomScale();
@@ -72,16 +67,9 @@ public class Guess
                 guesses++;
             }
 
-            if (guesses == 1)
-            {
-                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " try!", "Good Job", JOptionPane.INFORMATION_MESSAGE);
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " tries.", "Good Job", JOptionPane.INFORMATION_MESSAGE);
-            }
-
+            countGuesses(guesses);
             guesses = 1;
+
         } while(playAgain());
     }
 
@@ -89,6 +77,7 @@ public class Guess
     {
         int guesses = 1;
         Scale scale;
+
         do
         {   
             scale = getRandomScale();
@@ -114,25 +103,18 @@ public class Guess
                 guesses++;
             }
 
-            if (guesses == 1)
-            {
-                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " try!", "Good Job", JOptionPane.INFORMATION_MESSAGE);
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " tries.", "Good Job", JOptionPane.INFORMATION_MESSAGE);
-            }
-
+            countGuesses(guesses);
             guesses = 1;
 
         } while(playAgain());
     }
 
-    public void guessChords()
+    public void guessChordTriad()
     {
         int guesses = 1;
         Scale scale;
         ArrayList<String> chordTriad;
+
         do
         {
             scale = getRandomScale();
@@ -160,24 +142,33 @@ public class Guess
                 guesses++;
             }
 
-            if (guesses == 1)
-            {
-                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " try!", "Good Job", JOptionPane.INFORMATION_MESSAGE);
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " tries.", "Good Job", JOptionPane.INFORMATION_MESSAGE);
-            }
-
+            countGuesses(guesses);
             guesses = 1;
+
         } while(playAgain());
     }
 
     public void guessChordSequence()
     {
+        int guesses = 1;
+        Scale scale;
+
         do
         {
+            scale = getRandomScale();
+            
+            String guess = JOptionPane.showInputDialog(null, "Guess the Maj-min-dim chord sequence for " + scale.getName());
+            guess = guess.replaceAll("\\s+", "").toUpperCase();
+            while (!guess.equals(scale.toStringChordSequence()))
+            {
+                JOptionPane.showMessageDialog(null, "Incorrect, try again!\nWrong Guesses: " + guesses);
+                guess = JOptionPane.showInputDialog(null, "Guess the Maj-min-dim chord sequence for " + scale.getName());
+                guess = guess.replaceAll("\\s+", "").toUpperCase();
+                guesses++;
+            }
 
+            countGuesses(guesses);
+            guesses = 1;
         } while(playAgain());
     }
 
@@ -212,5 +203,15 @@ public class Guess
         return scale;
     }
 
-    
+    public void countGuesses(int guesses)
+    {
+        if (guesses == 1)
+            {
+                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " try!", "Good Job", JOptionPane.INFORMATION_MESSAGE);
+            }
+        else
+            {
+                JOptionPane.showMessageDialog(null, "Correct! It took you " + guesses + " tries.", "Good Job", JOptionPane.INFORMATION_MESSAGE);
+            }
+    }
 }

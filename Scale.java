@@ -79,5 +79,11 @@ public class Scale
         return notesString;
     }
 
+    public String toStringChordSequence()
+    {
+        String chordSequenceString = String.join("", getChordSequence()).toUpperCase();
+        return chordSequenceString;
+    }
+
 
 }
