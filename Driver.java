@@ -20,11 +20,11 @@ public class Driver
         while (menuChoice < 1 || menuChoice > 5)
         {
             JOptionPane.showMessageDialog(null, "Enter A number between 1 and 5.", "Error", JOptionPane.ERROR_MESSAGE);
-            choice = JOptionPane.showInputDialog(null, "Music Scale Guesser by Robert LoCicero" + "\n1.Guess an Entire Scale" + "\n2.Guess a notes position" 
+            choice = JOptionPane.showInputDialog(null, "Music Scale Master\n--------------------------------" + "\n1.Guess an Entire Scale" + "\n2.Guess a notes position" 
             + "\n3.Guess triads" + "\n4.Guess Major-Minor-Dim Sequence" + "\n5.Exit", "Main Menu", JOptionPane.INFORMATION_MESSAGE);
             menuChoice = Integer.parseInt(choice);
         }
-
+        
         switch(menuChoice)
         {
             case 1:

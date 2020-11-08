@@ -1,6 +1,12 @@
 import javax.swing.JOptionPane;
 
-
+/** 
+ * The Scale class creates a musical scale that has various
+ * methods to return attributes of the scale in either an array format
+ * or a filtered string for comparison purposes.
+ * @since November 7, 2020
+ * @author Robert Locicero
+*/
 public class Scale 
 {
     private String name;
@@ -61,17 +67,18 @@ public class Scale
         return chordSequence;
     }
 
+    
     public int getNoteCount()
     {
         return noteCount;
     }
 
     /**
-     * Take the Scale's array of notes, combine them into a single string
-     * Trim the spaces and convert it to uppercase.
+     * Take the Scale's array of notes, combines them into a single string,
+     * trims the spaces and converts it to uppercase.
      * 
      * 
-     * @return The Notes Array combined with spaces removed and all uppercase.
+     * @return An uppercase string with spaces removed.
      */
     public String toStringNotes()
     {
@@ -79,6 +86,12 @@ public class Scale
         return notesString;
     }
 
+    /**
+     * Take the Scale's Major-min-dim chord sequence, combines them into a single string,
+     * trims the spaces and converts it to uppercase.
+     * 
+     * @return An uppercase string with spaces removed.
+     */
     public String toStringChordSequence()
     {
         String chordSequenceString = String.join("", getChordSequence()).toUpperCase();
