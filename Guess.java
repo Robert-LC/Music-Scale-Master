@@ -15,6 +15,11 @@ public class Guess
     private Random rand;
     private ArrayList<Scale> scalesArrayList;
    
+    /**
+     * Constructor that sets up the scale objects that may be chosen
+     * 
+     * @since November 6, 2020
+    */
     public Guess()
     {
         scalesArrayList = new ArrayList<>();
@@ -146,6 +151,7 @@ public class Guess
         Scale scale;
         ArrayList<String> chordTriad;
 
+        // The game is looped until the user returns no from playAgain. The guesses are reset to one if they play again
         do
         {
             scale = getRandomScale();
@@ -162,6 +168,7 @@ public class Guess
             // Merge the chordTriad arrayList into a single string that can be used for comparison
             String answerChord = String.join("", chordTriad).toUpperCase();
 
+            // Takes the user's input, strip all spaces with a regex and convert it to uppercase.
             String guess = JOptionPane.showInputDialog(null, "What notes make a chord triad in the " + scale.getName() + " scale?");
             guess = guess.replaceAll("\\s+", "").toUpperCase();
 
@@ -179,16 +186,27 @@ public class Guess
         } while(playAgain());
     }
 
+    /**
+     * Allows the user to guess the Maj-min-dim chord sequence for a random scale.
+     * The function uses a regex and string manipulation to compare the users entered string
+     * to the scales chord sequence.
+     * 
+     * 
+     * @since November 7, 2020
+     */
     public void guessChordSequence()
     {
         int guesses = 1;
         Scale scale;
 
+        // The game is looped until the user returns no from playAgain. The guesses are reset to one if they play again
         do
         {
             scale = getRandomScale();
             
             String guess = JOptionPane.showInputDialog(null, "Guess the Maj-min-dim chord sequence for " + scale.getName());
+
+            // Takes the user's input, strip all spaces with a regex and convert it to uppercase.
             guess = guess.replaceAll("\\s+", "").toUpperCase();
             while (!guess.equals(scale.toStringChordSequence()))
             {
@@ -203,6 +221,13 @@ public class Guess
         } while(playAgain());
     }
 
+    /**
+     * Loops to allow the user to play again, makes sure 1 or 2 is entered
+     * 
+     * 
+     * @since November 7, 2020
+     * @return - Boolean indicating yes or no.
+     */
     public boolean playAgain()
     {
         int userContinue;
@@ -227,6 +252,13 @@ public class Guess
         return playAgain;
     }
 
+    /**
+     * Picks a random number which is the size of the arrayList containing all scales.
+     * Using that random number it indexes from the arrayList.
+     * 
+     * @since November 7, 2020
+     * @return - Scale Object picked randomly from an ArrayList of all scales
+     */
     public Scale getRandomScale()
     {
         int r = rand.nextInt(scalesArrayList.size());
@@ -234,6 +266,13 @@ public class Guess
         return scale;
     }
 
+    /**
+     * Simple function to change the grammar depending on how many guessues
+     * it took the user to complete a game.
+     * 
+     * @param guesses - takes the amount of guesses the user used
+     * @since November 7, 2020
+     */
     public void countGuesses(int guesses)
     {
         if (guesses == 1)

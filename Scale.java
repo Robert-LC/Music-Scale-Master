@@ -77,7 +77,7 @@ public class Scale
      * Take the Scale's array of notes, combines them into a single string,
      * trims the spaces and converts it to uppercase.
      * 
-     * 
+     * @since November 7, 2020
      * @return An uppercase string with spaces removed.
      */
     public String toStringNotes()
@@ -90,6 +90,7 @@ public class Scale
      * Take the Scale's Major-min-dim chord sequence, combines them into a single string,
      * trims the spaces and converts it to uppercase.
      * 
+     * @since November 7, 2020
      * @return An uppercase string with spaces removed.
      */
     public String toStringChordSequence()
@@ -97,6 +98,4 @@ public class Scale
         String chordSequenceString = String.join("", getChordSequence()).toUpperCase();
         return chordSequenceString;
     }
-
-
 }

@@ -11,9 +11,15 @@ public class Driver
         System.exit(0);  
     }
 
+     /**
+     * Main Menu with 5 choices. 
+     * Allows user to pick the gamemode or exit
+     * has user validation to make sure 1 - 5 is entered
+     * @since November 5, 2020
+     */
     public static void mainMenu()
     {
-        String choice = JOptionPane.showInputDialog(null, "Musical Scale Master\n--------------------------------" + "\n1. Guess Entire Scale" + "\n2. Guess Note Position" 
+        String choice = JOptionPane.showInputDialog(null, "Music Scale Mastery\n--------------------------------" + "\n1. Guess Entire Scale" + "\n2. Guess Note Position" 
         + "\n3. Guess Triad" + "\n4. Guess Major-Minor-Dim Sequence" + "\n5. Exit", "Main Menu", JOptionPane.INFORMATION_MESSAGE);
         int menuChoice = Integer.parseInt(choice);
 
@@ -44,7 +50,7 @@ public class Driver
                 mainMenu();
                 break;
             case 5:
-                JOptionPane.showMessageDialog(null, "Thanks for playing Music Scale Master by Robert LoCicero", "Thank You", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Thanks for playing Music Scale Mastery by Robert LoCicero", "Thank You", JOptionPane.INFORMATION_MESSAGE);
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Sorry, something went wrong.", "Error", JOptionPane.ERROR_MESSAGE);
